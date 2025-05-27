@@ -2,18 +2,27 @@ package com.cobre.accountservice.domain.model;
 
 import com.cobre.accountservice.domain.exceptions.InsufficientBalanceException;
 import com.cobre.accountservice.domain.exceptions.InvalidAmountException;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.UUID;
 
+@Getter
 public class Account {
 
-    private final String id;
-    private String name;
-    private String email;
+    private final UUID id;
+    private final String name;
+    private final String email;
+
+    @Getter
     private BigDecimal balance;
 
-    public Account(String id, String name, String email, BigDecimal balance) {
+    public Account(String name, String email, BigDecimal balance) {
+        this(UUID.randomUUID(), name, email, balance);
+    }
+
+    public Account(UUID id, String name, String email, BigDecimal balance) {
         this.id = Objects.requireNonNull(id);
         this.name = Objects.requireNonNull(name);
         this.email = Objects.requireNonNull(email);
@@ -35,21 +44,5 @@ public class Account {
             throw new InvalidAmountException("Amount must be greater than zero.");
         }
         this.balance = this.balance.add(amount);
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
     }
 }
