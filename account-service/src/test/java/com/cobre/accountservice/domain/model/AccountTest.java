@@ -64,4 +64,11 @@ public class AccountTest {
         assertNotNull(account.getId());
         assertInstanceOf(UUID.class, account.getId());
     }
+
+    @Test
+    void shouldThrowExceptionWhenDebitingNull() {
+        Account account = new Account("Test", "test@email.com", BigDecimal.valueOf(100));
+        assertThrows(InvalidAmountException.class, () -> account.debit(null));
+    }
+
 }
