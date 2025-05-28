@@ -1,36 +1,36 @@
 package com.cobre.accountservice.domain.model;
 
+import com.cobre.accountservice.domain.exceptions.InvalidTransferAmountException;
+import lombok.Getter;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+@Getter
 public class Transfer {
 
     private final UUID senderAccountId;
     private final UUID receiverAccountId;
-    private final BigDecimal transferAmount;
+    private final BigDecimal amountToWithdraw;
+    private final BigDecimal amountToTransfer;
 
-    public Transfer(UUID senderAccountId, UUID receiverAccountId, BigDecimal transferAmount) {
+    public Transfer(UUID senderAccountId, UUID receiverAccountId,
+                    BigDecimal amountToWithdraw, BigDecimal amountToTransfer) {
+
         if (senderAccountId == null || receiverAccountId == null) {
-            throw new IllegalArgumentException("Account IDs cannot be null");
+            throw new InvalidTransferAmountException("Sender and receiver account IDs cannot be null");
         }
-        if (transferAmount == null || transferAmount.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new IllegalArgumentException("Amount must be greater than zero");
+
+        if (amountToWithdraw == null || amountToWithdraw.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new InvalidTransferAmountException("Amount to withdraw must be greater than zero");
+        }
+
+        if (amountToTransfer == null || amountToTransfer.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new InvalidTransferAmountException("Amount to transfer must be greater than zero");
         }
 
         this.senderAccountId = senderAccountId;
         this.receiverAccountId = receiverAccountId;
-        this.transferAmount = transferAmount;
-    }
-
-    public UUID getSenderAccountId() {
-        return senderAccountId;
-    }
-
-    public UUID getReceiverAccountId() {
-        return receiverAccountId;
-    }
-
-    public BigDecimal getTransferAmount() {
-        return transferAmount;
+        this.amountToWithdraw = amountToWithdraw;
+        this.amountToTransfer = amountToTransfer;
     }
 }
