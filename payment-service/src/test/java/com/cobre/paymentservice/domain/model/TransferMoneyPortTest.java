@@ -1,6 +1,6 @@
 package com.cobre.paymentservice.domain.model;
 
-import com.cobre.paymentservice.domain.port.out.TransferMoneyPort;
+import com.cobre.paymentservice.domain.port.out.ITransferMoney;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
@@ -10,11 +10,11 @@ import static org.mockito.Mockito.*;
 
 public class TransferMoneyPortTest {
 
-    private TransferMoneyPort transferMoneyPort;
+    private ITransferMoney transferMoneyPort;
 
     @BeforeEach
     void setUp() {
-        transferMoneyPort = mock(TransferMoneyPort.class);
+        transferMoneyPort = mock(ITransferMoney.class);
     }
 
     @Test

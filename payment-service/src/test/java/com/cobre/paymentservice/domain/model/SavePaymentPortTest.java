@@ -1,6 +1,6 @@
 package com.cobre.paymentservice.domain.model;
 
-import com.cobre.paymentservice.domain.port.out.SavePaymentPort;
+import com.cobre.paymentservice.domain.port.out.ISavePayment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
@@ -12,11 +12,11 @@ import static org.mockito.Mockito.*;
 
 public class SavePaymentPortTest {
 
-    private SavePaymentPort savePaymentPort;
+    private ISavePayment savePaymentPort;
 
     @BeforeEach
     void setUp() {
-        savePaymentPort = mock(SavePaymentPort.class);
+        savePaymentPort = mock(ISavePayment.class);
     }
 
     @Test

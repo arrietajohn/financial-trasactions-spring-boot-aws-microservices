@@ -1,6 +1,6 @@
 package com.cobre.paymentservice.domain.model;
 
-import com.cobre.paymentservice.domain.port.out.NotifyPaymentPort;
+import com.cobre.paymentservice.domain.port.out.INotifyPayment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.UUID;
@@ -9,11 +9,11 @@ import static org.mockito.Mockito.*;
 
 class NotifyPaymentPortTest {
 
-    private NotifyPaymentPort notifyPaymentPort;
+    private INotifyPayment notifyPaymentPort;
 
     @BeforeEach
     void setUp() {
-        notifyPaymentPort = mock(NotifyPaymentPort.class);
+        notifyPaymentPort = mock(INotifyPayment.class);
     }
 
     @Test
