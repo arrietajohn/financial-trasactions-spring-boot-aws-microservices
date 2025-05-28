@@ -1,11 +1,11 @@
 package com.cobre.accountservice.infrastructure.adapter.repository;
 
+import com.cobre.accountservice.domain.exceptions.AccountNotFoundException;
 import com.cobre.accountservice.domain.model.Account;
 import com.cobre.accountservice.domain.port.out.IAccountRepository;
 import com.cobre.accountservice.infrastructure.persistence.mapper.AccountEntityMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-
 import java.util.Optional;
 import java.util.UUID;
 
@@ -25,4 +25,14 @@ public class AccountRepositoryImpl implements IAccountRepository {
         return accountJpaRepository.findById(accountId)
                 .map(AccountEntityMapper::toDomain);
     }
+
+    @Override
+    public void update(Account account) {
+        UUID id = account.getId();
+        if (!accountJpaRepository.existsById(id)) {
+            throw new AccountNotFoundException("Cannot update non-existent account with ID: " + id);
+        }
+        accountJpaRepository.save(AccountEntityMapper.toEntity(account));
+    }
+
 }
