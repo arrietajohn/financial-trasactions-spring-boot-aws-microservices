@@ -28,6 +28,11 @@ public class Transfer {
             throw new InvalidTransferAmountException("Amount to transfer must be greater than zero");
         }
 
+        if (amountToTransfer.compareTo(amountToWithdraw) > 0) {
+            throw new InvalidTransferAmountException("Amount to transfer cannot be greater than amount to withdraw");
+        }
+
+
         this.senderAccountId = senderAccountId;
         this.receiverAccountId = receiverAccountId;
         this.amountToWithdraw = amountToWithdraw;
