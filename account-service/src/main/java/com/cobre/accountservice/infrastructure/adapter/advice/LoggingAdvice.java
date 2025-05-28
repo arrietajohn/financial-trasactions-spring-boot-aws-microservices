@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -68,6 +70,37 @@ public class LoggingAdvice  {
 
         return new ResponseEntity<>(body, status);
     }
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseEntity<Object> handleNoHandlerFound(NoHandlerFoundException ex, HttpServletRequest request) {
+        String traceId = generateTraceId();
+
+        log.warn("[{}] [NOT_FOUND] {} {} - Endpoint not found", traceId, request.getMethod(), request.getRequestURI());
+
+        return buildResponse(HttpStatus.NOT_FOUND,
+                "The requested resource " + request.getRequestURI() + " does not exist.",
+                traceId,
+                request,
+                null,
+                "RESOURCE_NOT_FOUND");
+    }
+
+
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<Object> handleNoResourceFound(NoResourceFoundException ex, HttpServletRequest request) {
+        String traceId = generateTraceId();
+
+        log.warn("[{}] [NOT_FOUND] {} {} - Resource not found", traceId, request.getMethod(), request.getRequestURI());
+
+        return buildResponse(HttpStatus.NOT_FOUND,
+                "The requested resource " + request.getRequestURI() + " does not exist.",
+                traceId,
+                request,
+                null,
+                "RESOURCE_NOT_FOUND");
+    }
+
 
     private String generateTraceId() {
         return UUID.randomUUID().toString();
