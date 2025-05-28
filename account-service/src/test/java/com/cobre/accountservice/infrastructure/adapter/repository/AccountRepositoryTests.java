@@ -33,6 +33,12 @@ class AccountRepositoryTest {
             public void save(Account account) {
                 this.storedAccount = account;
             }
+
+            @Override
+            public void update(Account account) {
+
+            }
+
         };
     }
 
