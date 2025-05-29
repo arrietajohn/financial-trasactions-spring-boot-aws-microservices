@@ -30,7 +30,9 @@ public class SavePaymentPortTest {
                 new BigDecimal("500.00"),
                 "Pago de prueba",
                 PaymentStatus.PENDING,
-                Instant.now()
+                Instant.now(),
+                null
+                ,null
         );
 
         savePaymentPort.save(payment);
@@ -41,15 +43,17 @@ public class SavePaymentPortTest {
     @Test
     void shouldThrowExceptionWhenSaveFails() {
         Payment payment = new Payment(
-                UUID.randomUUID(),
-                UUID.randomUUID(),
-                UUID.randomUUID(),
-                new BigDecimal("10000.00"),
-                new BigDecimal("300.00"),
-                new BigDecimal("500.00"),
-                "Pago fallido",
-                PaymentStatus.PENDING,
-                Instant.now()
+                UUID.randomUUID(),          // paymentId
+                UUID.randomUUID(),          // senderId
+                UUID.randomUUID(),          // receiverId
+                new BigDecimal("10000.00"), // amount
+                new BigDecimal("300.00"),   // tax
+                new BigDecimal("500.00"),   // fee
+                "Pago fallido",             // reason
+                PaymentStatus.PENDING,      // status
+                Instant.now(),              // createdAt
+                null                        // transferStatus
+                ,null                       // transferMessage
         );
 
         doThrow(new RuntimeException("DB error")).when(savePaymentPort).save(payment);

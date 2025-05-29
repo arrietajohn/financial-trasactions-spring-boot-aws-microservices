@@ -17,7 +17,7 @@ public class PaymentTest {
         BigDecimal tax = new BigDecimal("300.00");
         BigDecimal fee = new BigDecimal("500.00");
 
-        Payment payment = new Payment(null, payerId, recipientId, amount, tax, fee, "Pago prueba", null, null);
+        Payment payment = new Payment(null, payerId, recipientId, amount, tax, fee, "Pago prueba", null, null, null, null);
 
         assertNotNull(payment.getPaymentId());
         assertEquals(payerId, payment.getPayerId());
@@ -34,7 +34,7 @@ public class PaymentTest {
         BigDecimal amount = BigDecimal.ZERO;
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Payment(null, payerId, recipientId, amount, null, null, "Pago inválido", null, null);
+            new Payment(null, payerId, recipientId, amount, null, null, "Pago inválido", null, null, null, null);
         });
 
         assertTrue(exception.getMessage().contains("greater than zero"));
@@ -46,7 +46,7 @@ public class PaymentTest {
         BigDecimal amount = new BigDecimal("10000.00");
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Payment(null, null, recipientId, amount, null, null, "Pago inválido", null, null);
+            new Payment(null, null, recipientId, amount, null, null, "Pago inválido", null, null, null, null);
         });
 
         assertTrue(exception.getMessage().contains("cannot be null"));
