@@ -30,3 +30,4 @@ aws:
   dynamodb:
     endpoint: http://localhost:4566
     table-name: Notifications
+
