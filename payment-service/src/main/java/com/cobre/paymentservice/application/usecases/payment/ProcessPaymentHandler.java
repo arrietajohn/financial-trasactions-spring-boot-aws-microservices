@@ -7,14 +7,17 @@ import com.cobre.paymentservice.application.port.in.payment.IProcessPaymentUseCa
 import com.cobre.paymentservice.application.service.IPaymentPolicyService;
 import com.cobre.paymentservice.domain.model.Payment;
 import com.cobre.paymentservice.domain.model.PaymentStatus;
+import com.cobre.paymentservice.domain.model.TransferErrorCode;
+import com.cobre.paymentservice.domain.model.TransferResult;
 import com.cobre.paymentservice.domain.port.out.INotifyPayment;
 import com.cobre.paymentservice.domain.port.out.ISavePayment;
 import com.cobre.paymentservice.domain.port.out.ITransferMoney;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Service
+
 public class ProcessPaymentHandler implements IProcessPaymentUseCase {
 
     private final IPaymentPolicyService paymentPolicyService;
@@ -37,33 +40,72 @@ public class ProcessPaymentHandler implements IProcessPaymentUseCase {
 
     @Override
     public ProcessPaymentResponse handle(ProcessPaymentCommand command) {
-        BigDecimal amount = command.getAmount();
+        if (!isAmountValid(command.getAmount())) {
+            var message = String.format(
+                    "Amount %s is out of allowed range [%s, %s]",
+                    command.getAmount(),
+                    paymentPolicyService.getMinAmount(),
+                    paymentPolicyService.getMaxAmount()
+            );
+            var paymentId = UUID.randomUUID();
 
-        if (amount.compareTo(paymentPolicyService.getMinAmount()) < 0 ||
-                amount.compareTo(paymentPolicyService.getMaxAmount()) > 0) {
-            return new ProcessPaymentResponse(null, PaymentStatus.FAILED, "Amount out of allowed range");
+            return new ProcessPaymentResponse(paymentId, PaymentStatus.FAILED, message);
         }
 
-        BigDecimal tax = paymentPolicyService.calculateTax(amount);
-        BigDecimal fee = paymentPolicyService.calculateFee(amount);
+        Payment payment = buildInitialPayment(command);
+        TransferResult transferResult = executeTransfer(payment);
+        payment = updatePaymentWithResult(payment, transferResult);
 
-        Payment payment = paymentMapper.toDomain(command, tax, fee);
+        savePaymentPort.save(payment);
+        notifyPaymentPort.notify(paymentMapper.toNotification(payment, transferResult.message()));
 
+        return paymentMapper.toResponse(payment);
+    }
+    
+    private boolean isAmountValid(BigDecimal amount) {
+        return amount.compareTo(paymentPolicyService.getMinAmount()) >= 0 &&
+                amount.compareTo(paymentPolicyService.getMaxAmount()) <= 0;
+    }
+
+    private Payment buildInitialPayment(ProcessPaymentCommand command) {
+        BigDecimal tax = paymentPolicyService.calculateTax(command.getAmount());
+        BigDecimal fee = paymentPolicyService.calculateFee(command.getAmount());
+        return paymentMapper.toDomain(command, tax, fee);
+    }
+
+    private TransferResult executeTransfer(Payment payment) {
         try {
-            transferMoneyPort.transfer(
+            return transferMoneyPort.transfer(
                     payment.getPayerId(),
                     payment.getRecipientId(),
                     payment.getTotalAmount(),
                     payment.getAmount()
             );
-            payment = paymentMapper.withStatus(payment, PaymentStatus.SUCCESS);
         } catch (Exception e) {
-            payment = paymentMapper.withStatus(payment, PaymentStatus.FAILED);
+            return new TransferResult(
+                    payment.getPayerId(),
+                    TransferErrorCode.FAILED_INTERNAL_ERROR.getCode(),
+                    e.getMessage() != null ? e.getMessage() : "Transfer failed",
+                    null,// traceId
+                    null,       // path
+                    null,       // code
+                    null,       // method
+                    null,       // service
+                    null,       // error
+                    null,       // details
+                    null,       // timestamp
+                    500         // httpStatus
+            );
         }
-
-        savePaymentPort.save(payment);
-        notifyPaymentPort.notify(payment.getPaymentId());
-
-        return paymentMapper.toResponse(payment);
     }
+
+    private Payment updatePaymentWithResult(Payment payment, TransferResult result) {
+        return paymentMapper.withStatus(
+                payment,
+                result.isSuccess() ? PaymentStatus.SUCCESS : PaymentStatus.FAILED,
+                result.status(),
+                result.message()
+        );
+    }
+
 }
