@@ -57,3 +57,6 @@ jacoco.exec
 # Evita que se ignore el paquete 'port/out'
 !src/main/java/**/port/out/
 !src/main/java/**/port/out/**
+
+# Ignorar la carpeta de caché de LocalStack
+**/localstack/cache/
