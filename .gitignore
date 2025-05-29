@@ -1,0 +1,62 @@
+# === Java ===
+*.class
+
+# === Maven ===
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+.mvn/wrapper/maven-wrapper-download.properties
+
+# === Logs ===
+logs/
+*.log
+*.out         # solo ignora archivos .out, no carpetas
+
+# === Archivos temporales del sistema ===
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+*.bak
+
+# === Test / Coverage ===
+coverage/
+test-output/
+jacoco.exec
+
+# === IntelliJ IDEA ===
+.idea/
+*.iml
+*.ipr
+*.iws
+.idea/out/    # solo ignora out de IntelliJ, no del código fuente
+
+# === VS Code ===
+.vscode/
+
+# === NetBeans ===
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# === Spring Tool Suite (STS) ===
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# === Environment variables ===
+.env
+
+# === Hexagonal Architecture exceptions ===
+# Evita que se ignore el paquete 'port/out'
+!src/main/java/**/port/out/
+!src/main/java/**/port/out/**
+
+# Ignorar la carpeta de caché de LocalStack
+**/localstack/cache/
