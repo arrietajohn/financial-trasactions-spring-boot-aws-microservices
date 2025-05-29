@@ -10,10 +10,8 @@ import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.http.urlconnection.UrlConnectionHttpClient;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
-
 import java.net.URI;
 
-@Configuration
 @RequiredArgsConstructor
 public class DynamoDbConfig {
 
