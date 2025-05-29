@@ -3,10 +3,10 @@ spring:
     name: payment-service
 
   datasource:
-    url: jdbc:h2:mem:accountdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:paymentsDb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     driver-class-name: org.h2.Driver
     username: sa
-    password:
+    password: ""
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
@@ -23,9 +23,47 @@ spring:
       path: /h2-console
 
 server:
-  port: 8081
+  port: 8082
 
 logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql: TRACE
+
+payment:
+  rules:
+    minAmount: 5000
+    maxAmount: 100000
+    taxRate: 0.03
+    feeRate: 0.05
+
+clients:
+  account-service:
+    url: http://localhost:8081/api/v1/transfers
+
+resilience4j:
+  retry:
+    instances:
+      accountServiceRetry:
+        max-attempts: 3
+        wait-duration: 500ms
+  circuitbreaker:
+    instances:
+      accountServiceCircuitBreaker:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 2
+        minimum-number-of-calls: 5
+
+aws:
+  sqs:
+    payment-queue-url: http://localhost:4566/000000000000/payment-notifications
+
+cloud:
+  aws:
+    region:
+      static: us-east-1
+    credentials:
+      access-key: test
+      secret-key: test
