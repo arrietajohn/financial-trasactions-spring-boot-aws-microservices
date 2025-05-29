@@ -1,7 +1,6 @@
 package com.cobre.paymentservice.domain.model;
 
 import lombok.Getter;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
@@ -19,6 +18,8 @@ public class Payment {
     private final String reason;
     private final PaymentStatus status;
     private final Instant timestamp;
+    private final String transferStatus;
+    private final String transferMessage;
 
     public Payment(UUID paymentId,
                    UUID payerId,
@@ -28,7 +29,9 @@ public class Payment {
                    BigDecimal fee,
                    String reason,
                    PaymentStatus status,
-                   Instant timestamp) {
+                   Instant timestamp,
+                   String transferStatus,
+                   String transferMessage) {
 
         if (payerId == null || recipientId == null) {
             throw new IllegalArgumentException("Payer and recipient IDs cannot be null");
@@ -48,5 +51,7 @@ public class Payment {
         this.reason = reason;
         this.status = status != null ? status : PaymentStatus.PENDING;
         this.timestamp = timestamp != null ? timestamp : Instant.now();
+        this.transferStatus = transferStatus;
+        this.transferMessage = transferMessage;
     }
 }
