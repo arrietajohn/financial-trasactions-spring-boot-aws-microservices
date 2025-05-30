@@ -1,5 +1,6 @@
 package com.cobre.notificationservice.domain.model;
 
+import lombok.Builder;
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -7,6 +8,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Getter
+@Builder
 public class Notification {
 
     private final UUID id;
