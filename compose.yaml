@@ -1,0 +1,32 @@
+services:
+  account:
+    build: account-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - localstack
+  notification:
+    build: notification-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - localstack
+  payment:
+    build: payment-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - localstack
+  localstack:
+    image: localstack/localstack:3.3
+    environment:
+      - SERVICES=sqs,sns,dynamodb
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    ports:
+      - '4566:4566' # Edge port
+    volumes:
+      - type: bind
+        source: ./scripts/init_localstack.sh
+        target: /etc/localstack/init/ready.d/init_localstack.sh
+      - /var/run/docker.sock:/var/run/docker.sock
