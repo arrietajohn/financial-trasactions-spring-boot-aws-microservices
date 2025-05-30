@@ -5,18 +5,42 @@ services:
       - "8081:8081"
     depends_on:
       - localstack
+    environment:
+      - SERVER_PORT=8081
   notification:
     build: notification-service
-    ports:
-      - "8082:8082"
-    depends_on:
-      - localstack
-  payment:
-    build: payment-service
     ports:
       - "8083:8083"
     depends_on:
       - localstack
+    environment:
+      - SERVER_PORT=8083
+      - SPRING_CLOUD_AWS_REGION=us-east-1
+      - SPRING_CLOUD_AWS_CREDENTIALS_ACCESS_KEY=test
+      - SPRING_CLOUD_AWS_CREDENTIALS_SECRET_KEY=test
+      - SPRING_CLOUD_AWS_SQS_ENDPOINT=http://localstack:4566
+      - AWS_REGION=us-east-1
+      - AWS_CREDENTIALS_ACCESS_KEY=test
+      - AWS_CREDENTIALS_SECRET_KEY=test
+      - AWS_SQS_ENDPOINT=http://localstack:4566
+      - AWS_SQS_QUEUE_NAME=payment-notifications
+      - AWS_SQS_QUEUE_URL=http://localstack:4566/000000000000/payment-notifications
+      - AWS_DYNAMODB_ENDPOINT=http://localstack:4566
+      - AWS_DYNAMODB_TABLE_NAME=Notifications
+  payment:
+    build: payment-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - localstack
+    environment:
+      - SERVER_PORT=8082
+      - PAYMENT_RULES_MIN_AMOUNT=5000
+      - PAYMENT_RULES_MAX_AMOUNT=100000
+      - PAYMENT_RULES_TAX_RATE=0.03
+      - PAYMENT_RULES_FEE_RATE=0.05
+      - CLIENTS_ACCOUNT_SERVICE_URL=http://account:8081/api/v1/transfers
+      - AWS_SQS_PAYMENT_QUEUE_URL=http://localstack:4566/000000000000/payment-notifications
   localstack:
     image: localstack/localstack:3.3
     environment:
@@ -30,3 +54,4 @@ services:
         source: ./scripts/init_localstack.sh
         target: /etc/localstack/init/ready.d/init_localstack.sh
       - /var/run/docker.sock:/var/run/docker.sock
+    
