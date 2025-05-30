@@ -2,6 +2,16 @@ spring:
   application:
     name: notification-service
 
+  cloud:
+    aws:
+      region:
+        static: us-east-1
+      credentials:
+        access-key: test
+        secret-key: test
+      sqs:
+        endpoint: http://localhost:4566
+
 server:
   port: 8083
 
@@ -25,9 +35,9 @@ aws:
     access-key: test
     secret-key: test
   sqs:
+    endpoint: http://localhost:4566
     queue-name: payment-notifications
     queue-url: http://localhost:4566/000000000000/payment-notifications
   dynamodb:
     endpoint: http://localhost:4566
     table-name: Notifications
-

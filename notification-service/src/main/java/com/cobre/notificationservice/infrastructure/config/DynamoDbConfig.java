@@ -12,6 +12,7 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import java.net.URI;
 
+@Configuration
 @RequiredArgsConstructor
 public class DynamoDbConfig {
 
