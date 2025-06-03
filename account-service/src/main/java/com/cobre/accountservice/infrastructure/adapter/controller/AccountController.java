@@ -1,7 +1,11 @@
 package com.cobre.accountservice.infrastructure.adapter.controller;
 
 import com.cobre.accountservice.application.dto.CreateAccountCommand;
-import com.cobre.accountservice.application.dto.CreateAccountResponse;
+import com.cobre.accountservice.application.dto.FindAccountQuery;
+import com.cobre.accountservice.application.mapper.AccountMapper;
+import com.cobre.accountservice.application.port.in.get.IGetAccountUseCase;
+import com.cobre.accountservice.infrastructure.adapter.dto.AccountResponse;
+import com.cobre.accountservice.infrastructure.adapter.dto.CreateAccountResponse;
 import com.cobre.accountservice.application.port.in.create.ICreateAccountUseCase;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -12,20 +16,29 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import java.util.UUID;
 
-@Tag(name = "Transfer API", description = "Money transfer operations between accounts")
+
+@Tag(name = "Account API", description = "Account manager use cases")
 @RestController
 @RequestMapping("/api/v1/accounts")
 @RequiredArgsConstructor
 public class AccountController {
 
     private final ICreateAccountUseCase accountService;
+    private final IGetAccountUseCase getAccountUsecase;
 
     @Operation(summary = "Create a new account")
     @ApiResponse(responseCode = "201", description = "Account created")
     @PostMapping
     public ResponseEntity<CreateAccountResponse> create(@Valid @RequestBody CreateAccountCommand request) {
-        CreateAccountResponse response = accountService.handle(request);
+        var accountedCreated = accountService.handle(request);
+        var response = AccountMapper.toResponse(accountedCreated);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{accountId}")
+    public ResponseEntity<AccountResponse> get(@PathVariable UUID accountId) {
+        return ResponseEntity.ok(AccountMapper.toGetResponse(getAccountUsecase.handle(new FindAccountQuery(accountId))));
     }
 }

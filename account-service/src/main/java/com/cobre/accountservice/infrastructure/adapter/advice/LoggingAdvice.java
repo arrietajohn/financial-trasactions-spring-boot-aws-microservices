@@ -13,6 +13,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
@@ -71,7 +72,10 @@ public class LoggingAdvice {
 
     @ExceptionHandler(AccountNotFoundException.class)
     public ResponseEntity<Object> handleAccountNotFound(AccountNotFoundException ex, HttpServletRequest request) {
-        return buildBusinessErrorResponse(request, ex, TransferStatusEnum.FAILED_ACCOUNT_NOT_FOUND);
+        String traceId = generateTraceId();
+        return buildResponse(HttpStatus.NOT_FOUND,
+                ex.getMessage(),
+                traceId, request, null, TransferStatusEnum.FAILED_ACCOUNT_NOT_FOUND.name());
     }
 
     @ExceptionHandler(InsufficientBalanceException.class)
@@ -84,12 +88,13 @@ public class LoggingAdvice {
         return buildBusinessErrorResponse(request, ex, TransferStatusEnum.FAILED_INVALID_AMOUNT);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object> handleAllExceptions(Exception ex, HttpServletRequest request) {
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<Object> handleMalformedUUIDException(MethodArgumentTypeMismatchException ex, HttpServletRequest request) {
         String traceId = generateTraceId();
         log.error("[{}] [SYSTEM] {} {} - {}: {}", traceId, request.getMethod(), request.getRequestURI(), ex.getClass().getSimpleName(), ex.getMessage(), ex);
 
-        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred.", traceId, request, null, TransferStatusEnum.FAILED_INTERNAL_ERROR.name());
+        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "UUID is malformed or invalid.", traceId, request, null, TransferStatusEnum.FAILED_INVALID_AMOUNT.name());
     }
 
     private ResponseEntity<Object> buildBusinessErrorResponse(HttpServletRequest request, Exception ex, TransferStatusEnum statusEnum) {
@@ -123,6 +128,13 @@ public class LoggingAdvice {
         return new ResponseEntity<>(body, status);
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> handleAllExceptions(Exception ex, HttpServletRequest request) {
+        String traceId = generateTraceId();
+        log.error("[{}] [SYSTEM] {} {} - {}: {}", traceId, request.getMethod(), request.getRequestURI(), ex.getClass().getSimpleName(), ex.getMessage(), ex);
+
+        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred.", traceId, request, null, TransferStatusEnum.FAILED_INTERNAL_ERROR.name());
+    }
 
     private String generateTraceId() {
         return UUID.randomUUID().toString();

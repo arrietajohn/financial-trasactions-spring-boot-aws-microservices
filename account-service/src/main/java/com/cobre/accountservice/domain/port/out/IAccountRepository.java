@@ -8,4 +8,5 @@ public interface IAccountRepository {
     Optional<Account> findById(UUID accountId);
     void save(Account account);
     void update(Account account);
+
 }
