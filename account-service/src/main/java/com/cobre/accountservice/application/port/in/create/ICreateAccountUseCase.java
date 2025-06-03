@@ -1,9 +1,9 @@
 package com.cobre.accountservice.application.port.in.create;
 
 import com.cobre.accountservice.application.dto.CreateAccountCommand;
-import com.cobre.accountservice.application.dto.CreateAccountResponse;
+import com.cobre.accountservice.domain.model.Account;
 
 public interface ICreateAccountUseCase {
 
-    CreateAccountResponse handle(CreateAccountCommand command);
+    Account handle(CreateAccountCommand command);
 }

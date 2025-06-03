@@ -20,8 +20,7 @@ public class TransferMoneyHandler implements ITransferMoneyUseCase {
 
     @Override
     @Transactional
-    public TransferMoneyResponse transfer(TransferMoneyCommand command) {
-        // Validación de negocio en dominio
+    public TransferMoneyResponse  transfer(TransferMoneyCommand command) {
         Transfer transfer = new Transfer(
                 command.getSenderAccountId(),
                 command.getRecipientAccountId(),
@@ -29,7 +28,6 @@ public class TransferMoneyHandler implements ITransferMoneyUseCase {
                 command.getAmountToTransfer()
         );
 
-        // Reglas de negocio
         Account sender = accountRepository.findById(transfer.getSenderAccountId())
                 .orElseThrow(() -> new AccountNotFoundException("Sender account not found"));
 
