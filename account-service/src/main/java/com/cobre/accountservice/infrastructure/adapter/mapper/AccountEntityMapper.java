@@ -1,4 +1,4 @@
-package com.cobre.accountservice.infrastructure.persistence.mapper;
+package com.cobre.accountservice.infrastructure.adapter.mapper;
 
 import com.cobre.accountservice.domain.model.Account;
 import com.cobre.accountservice.infrastructure.persistence.entity.AccountEntity;
@@ -10,7 +10,8 @@ public class AccountEntityMapper {
                 entity.getId(),
                 entity.getName(),
                 entity.getEmail(),
-                entity.getBalance()
+                entity.getBalance(),
+                entity.getStatus()
         );
     }
 
@@ -20,6 +21,7 @@ public class AccountEntityMapper {
                 .name(account.getName())
                 .email(account.getEmail())
                 .balance(account.getBalance())
+                .status(account.getStatus())
                 .build();
     }
 }

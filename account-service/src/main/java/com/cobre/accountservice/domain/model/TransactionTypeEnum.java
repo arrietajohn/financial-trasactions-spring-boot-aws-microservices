@@ -1,6 +1,6 @@
 package com.cobre.accountservice.domain.model;
 
-public enum TransferStatusEnum {
+public enum TransactionTypeEnum {
     SUCCESS,
     FAILED_INSUFFICIENT_BALANCE,
     FAILED_ACCOUNT_NOT_FOUND,

@@ -1,6 +1,6 @@
 package com.cobre.accountservice.application.dto;
 
-import com.cobre.accountservice.domain.model.TransferStatusEnum;
+import com.cobre.accountservice.domain.model.TransactionTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,6 +13,6 @@ import java.util.UUID;
 @NoArgsConstructor
 public class TransferMoneyResponse {
     private UUID senderAccountId;
-    private TransferStatusEnum status;
+    private TransactionTypeEnum status;
     private String message;
 }

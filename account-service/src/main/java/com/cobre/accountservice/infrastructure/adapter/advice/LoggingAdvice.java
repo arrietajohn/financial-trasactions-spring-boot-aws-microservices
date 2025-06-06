@@ -4,7 +4,7 @@ import com.cobre.accountservice.domain.exceptions.AccountNotFoundException;
 import com.cobre.accountservice.domain.exceptions.InsufficientBalanceException;
 import com.cobre.accountservice.domain.exceptions.InvalidAmountException;
 import com.cobre.accountservice.domain.exceptions.InvalidTransferAmountException;
-import com.cobre.accountservice.domain.model.TransferStatusEnum;
+import com.cobre.accountservice.domain.model.TransactionTypeEnum;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -36,7 +36,7 @@ public class LoggingAdvice {
 
         log.warn("[{}] [VALIDATION] {} {} - validation errors: {}", traceId, request.getMethod(), request.getRequestURI(), fieldErrors);
 
-        return buildResponse(HttpStatus.BAD_REQUEST, "Validation failed", traceId, request, fieldErrors, TransferStatusEnum.FAILED_INVALID_AMOUNT.name());
+        return buildResponse(HttpStatus.BAD_REQUEST, "Validation failed", traceId, request, fieldErrors, TransactionTypeEnum.FAILED_INVALID_AMOUNT.name());
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
@@ -56,7 +56,7 @@ public class LoggingAdvice {
 
         return buildResponse(HttpStatus.NOT_FOUND,
                 "The requested resource " + request.getRequestURI() + " does not exist.",
-                traceId, request, null, TransferStatusEnum.FAILED_ACCOUNT_NOT_FOUND.name());
+                traceId, request, null, TransactionTypeEnum.FAILED_ACCOUNT_NOT_FOUND.name());
     }
 
     @ExceptionHandler(NoResourceFoundException.class)
@@ -67,7 +67,7 @@ public class LoggingAdvice {
 
         return buildResponse(HttpStatus.NOT_FOUND,
                 "The requested resource " + request.getRequestURI() + " does not exist.",
-                traceId, request, null, TransferStatusEnum.FAILED_ACCOUNT_NOT_FOUND.name());
+                traceId, request, null, TransactionTypeEnum.FAILED_ACCOUNT_NOT_FOUND.name());
     }
 
     @ExceptionHandler(AccountNotFoundException.class)
@@ -75,17 +75,17 @@ public class LoggingAdvice {
         String traceId = generateTraceId();
         return buildResponse(HttpStatus.NOT_FOUND,
                 ex.getMessage(),
-                traceId, request, null, TransferStatusEnum.FAILED_ACCOUNT_NOT_FOUND.name());
+                traceId, request, null, TransactionTypeEnum.FAILED_ACCOUNT_NOT_FOUND.name());
     }
 
     @ExceptionHandler(InsufficientBalanceException.class)
     public ResponseEntity<Object> handleInsufficientBalance(InsufficientBalanceException ex, HttpServletRequest request) {
-        return buildBusinessErrorResponse(request, ex, TransferStatusEnum.FAILED_INSUFFICIENT_BALANCE);
+        return buildBusinessErrorResponse(request, ex, TransactionTypeEnum.FAILED_INSUFFICIENT_BALANCE);
     }
 
     @ExceptionHandler({InvalidAmountException.class, InvalidTransferAmountException.class})
     public ResponseEntity<Object> handleInvalidAmounts(Exception ex, HttpServletRequest request) {
-        return buildBusinessErrorResponse(request, ex, TransferStatusEnum.FAILED_INVALID_AMOUNT);
+        return buildBusinessErrorResponse(request, ex, TransactionTypeEnum.FAILED_INVALID_AMOUNT);
     }
 
 
@@ -94,10 +94,10 @@ public class LoggingAdvice {
         String traceId = generateTraceId();
         log.error("[{}] [SYSTEM] {} {} - {}: {}", traceId, request.getMethod(), request.getRequestURI(), ex.getClass().getSimpleName(), ex.getMessage(), ex);
 
-        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "UUID is malformed or invalid.", traceId, request, null, TransferStatusEnum.FAILED_INVALID_AMOUNT.name());
+        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "UUID is malformed or invalid.", traceId, request, null, TransactionTypeEnum.FAILED_INVALID_AMOUNT.name());
     }
 
-    private ResponseEntity<Object> buildBusinessErrorResponse(HttpServletRequest request, Exception ex, TransferStatusEnum statusEnum) {
+    private ResponseEntity<Object> buildBusinessErrorResponse(HttpServletRequest request, Exception ex, TransactionTypeEnum statusEnum) {
         String traceId = generateTraceId();
         log.warn("[{}] [BUSINESS] {} {} - {}", traceId, request.getMethod(), request.getRequestURI(), ex.getMessage());
 
@@ -133,7 +133,7 @@ public class LoggingAdvice {
         String traceId = generateTraceId();
         log.error("[{}] [SYSTEM] {} {} - {}: {}", traceId, request.getMethod(), request.getRequestURI(), ex.getClass().getSimpleName(), ex.getMessage(), ex);
 
-        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred.", traceId, request, null, TransferStatusEnum.FAILED_INTERNAL_ERROR.name());
+        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred.", traceId, request, null, TransactionTypeEnum.FAILED_INTERNAL_ERROR.name());
     }
 
     private String generateTraceId() {

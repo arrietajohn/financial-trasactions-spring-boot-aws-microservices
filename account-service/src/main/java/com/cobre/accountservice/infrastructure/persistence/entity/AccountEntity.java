@@ -2,6 +2,7 @@ package com.cobre.accountservice.infrastructure.persistence.entity;
 
 
 
+import com.cobre.accountservice.domain.model.AccountStatusEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,4 +27,6 @@ public class AccountEntity {
 
     @Column(nullable = false)
     private BigDecimal balance;
+    @Enumerated(EnumType.STRING)
+    private AccountStatusEnum status;
 }

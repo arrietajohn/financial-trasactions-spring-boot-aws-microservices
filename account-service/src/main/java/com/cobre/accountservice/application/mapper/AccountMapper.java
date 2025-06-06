@@ -24,7 +24,8 @@ public class AccountMapper {
                 account.getId(),
                 account.getName(),
                 account.getEmail(),
-                account.getBalance()
+                account.getBalance(),
+                account.getStatus()
         );
     }
 

@@ -14,19 +14,22 @@ public class Account {
     private final UUID id;
     private final String name;
     private final String email;
+    private final AccountStatusEnum status ;
 
     @Getter
     private BigDecimal balance;
 
     public Account(String name, String email, BigDecimal balance) {
-        this(UUID.randomUUID(), name, email, balance);
+        this(UUID.randomUUID(), name, email, balance, AccountStatusEnum.ACTIVE);
     }
 
-    public Account(UUID id, String name, String email, BigDecimal balance) {
+
+    public Account(UUID id, String name, String email, BigDecimal balance, AccountStatusEnum status) {
         this.id = Objects.requireNonNull(id);
         this.name = Objects.requireNonNull(name);
         this.email = Objects.requireNonNull(email);
         this.balance = Objects.requireNonNull(balance);
+        this.status = Objects.requireNonNull(status);
     }
 
     public void debit(BigDecimal amount) {

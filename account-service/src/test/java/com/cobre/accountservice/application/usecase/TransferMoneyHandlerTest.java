@@ -6,7 +6,8 @@ import com.cobre.accountservice.application.usecases.transfer.TransferMoneyHandl
 import com.cobre.accountservice.domain.exceptions.AccountNotFoundException;
 import com.cobre.accountservice.domain.exceptions.InsufficientBalanceException;
 import com.cobre.accountservice.domain.model.Account;
-import com.cobre.accountservice.domain.model.TransferStatusEnum;
+import com.cobre.accountservice.domain.model.AccountStatusEnum;
+import com.cobre.accountservice.domain.model.TransactionTypeEnum;
 import com.cobre.accountservice.domain.port.out.IAccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,8 +35,8 @@ public class TransferMoneyHandlerTest {
         UUID senderId = UUID.randomUUID();
         UUID receiverId = UUID.randomUUID();
 
-        Account sender = new Account(senderId, "Sender", "sender@example.com", new BigDecimal("10000"));
-        Account receiver = new Account(receiverId, "Receiver", "receiver@example.com", new BigDecimal("1000"));
+        Account sender = new Account(senderId, "Sender", "sender@example.com", new BigDecimal("10000"), AccountStatusEnum.ACTIVE);
+        Account receiver = new Account(receiverId, "Receiver", "receiver@example.com", new BigDecimal("1000"), AccountStatusEnum.ACTIVE);
 
         accountRepository.save(sender);
         accountRepository.save(receiver);
@@ -52,7 +53,7 @@ public class TransferMoneyHandlerTest {
 
         TransferMoneyResponse response = handler.transfer(command);
 
-        assertThat(response.getStatus()).isEqualTo(TransferStatusEnum.SUCCESS);
+        assertThat(response.getStatus()).isEqualTo(TransactionTypeEnum.SUCCESS);
         assertThat(response.getSenderAccountId()).isEqualTo(senderId);
 
         verify(accountRepository).save(sender);
@@ -81,8 +82,8 @@ public class TransferMoneyHandlerTest {
         UUID senderId = UUID.randomUUID();
         UUID receiverId = UUID.randomUUID();
 
-        Account sender = new Account(senderId, "Sender", "sender@example.com", new BigDecimal("500"));
-        Account receiver = new Account(receiverId, "Receiver", "receiver@example.com", new BigDecimal("1000"));
+        Account sender = new Account(senderId, "Sender", "sender@example.com", new BigDecimal("500") , AccountStatusEnum.ACTIVE);
+        Account receiver = new Account(receiverId, "Receiver", "receiver@example.com", new BigDecimal("1000") , AccountStatusEnum.ACTIVE);
 
         when(accountRepository.findById(senderId)).thenReturn(Optional.of(sender));
         when(accountRepository.findById(receiverId)).thenReturn(Optional.of(receiver));

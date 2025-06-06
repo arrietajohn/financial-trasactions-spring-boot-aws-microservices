@@ -6,7 +6,7 @@ import com.cobre.accountservice.application.port.in.transfer.ITransferMoneyUseCa
 import com.cobre.accountservice.domain.exceptions.AccountNotFoundException;
 import com.cobre.accountservice.domain.model.Account;
 import com.cobre.accountservice.domain.model.Transfer;
-import com.cobre.accountservice.domain.model.TransferStatusEnum;
+import com.cobre.accountservice.domain.model.TransactionTypeEnum;
 import com.cobre.accountservice.domain.port.out.IAccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -42,7 +42,7 @@ public class TransferMoneyHandler implements ITransferMoneyUseCase {
 
         return TransferMoneyResponse.builder()
                 .senderAccountId(sender.getId())
-                .status(TransferStatusEnum.SUCCESS)
+                .status(TransactionTypeEnum.SUCCESS)
                 .message("Transfer completed successfully")
                 .build();
     }
