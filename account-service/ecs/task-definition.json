@@ -1,14 +1,14 @@
 {
   "family": "account-task",
   "networkMode": "awsvpc",
-  "executionRoleArn": "arn:aws:iam::<YOUR_ACCOUNT_ID>:role/ECSTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::490457333187:role/ECSTaskExecutionRole",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "256",
   "memory": "512",
   "containerDefinitions": [
     {
       "name": "account-container",
-      "image": "<YOUR_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/account-service:latest",
+      "image": "490457333187.dkr.ecr.us-east-1.amazonaws.com/account-service:latest",
       "portMappings": [
         {
           "containerPort": 8081,
@@ -29,7 +29,6 @@
           "name": "SERVER_PORT",
           "value": "8081"
         }
-        // Aquí puedes añadir más variables si no usarás SSM
       ]
     }
   ]
