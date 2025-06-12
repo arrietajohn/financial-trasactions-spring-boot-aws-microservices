@@ -1,0 +1,36 @@
+{
+  "family": "account-task",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "arn:aws:iam::<YOUR_ACCOUNT_ID>:role/ECSTaskExecutionRole",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "containerDefinitions": [
+    {
+      "name": "account-container",
+      "image": "<YOUR_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/account-service:latest",
+      "portMappings": [
+        {
+          "containerPort": 8081,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/account-service",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "environment": [
+        {
+          "name": "SERVER_PORT",
+          "value": "8081"
+        }
+        // Aquí puedes añadir más variables si no usarás SSM
+      ]
+    }
+  ]
+}

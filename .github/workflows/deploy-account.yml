@@ -1,0 +1,49 @@
+name: Deploy Account Service to ECS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and push Docker image
+        run: |
+          IMAGE_TAG=latest
+          IMAGE_URI=${{ steps.login-ecr.outputs.registry }}/account-service:$IMAGE_TAG
+
+          docker build -t account-service ./account-service
+          docker tag account-service:latest $IMAGE_URI
+          docker push $IMAGE_URI
+
+      - name: Render new task definition
+        id: render-task
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: account-service/ecs/task-definition.json
+          container-name: account-container
+          image: ${{ steps.login-ecr.outputs.registry }}/account-service:latest
+
+      - name: Deploy to ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          cluster: account-cluster
+          service: account-service
+          task-definition: ${{ steps.render-task.outputs.task-definition }}
