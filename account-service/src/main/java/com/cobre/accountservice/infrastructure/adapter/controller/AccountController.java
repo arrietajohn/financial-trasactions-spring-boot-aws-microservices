@@ -42,7 +42,7 @@ public class AccountController {
         var accountExists = getAccountUsecase.exists(new FindAccountQuery(accountId));
         response = AccountMapper.toResponse(getAccountUsecase.handle(accountExists));
         var responseMap = Map.of(
-                "Acoount", () ->,response
+                "Acoount",response
         );
         return ResponseEntity.ok(responseMap);
     }
