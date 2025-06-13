@@ -1,12 +1,11 @@
 package com.cobre.accountservice.infrastructure.adapter.controller;
-
 import com.cobre.accountservice.application.dto.CreateAccountCommand;
 import com.cobre.accountservice.application.dto.FindAccountQuery;
 import com.cobre.accountservice.application.mapper.AccountMapper;
+import com.cobre.accountservice.application.port.in.create.ICreateAccountUseCase;
 import com.cobre.accountservice.application.port.in.get.IGetAccountUseCase;
 import com.cobre.accountservice.infrastructure.adapter.dto.AccountResponse;
 import com.cobre.accountservice.infrastructure.adapter.dto.CreateAccountResponse;
-import com.cobre.accountservice.application.port.in.create.ICreateAccountUseCase;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +15,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -38,12 +38,10 @@ public class AccountController {
     }
 
     @GetMapping("/{accountId}")
-    public ResponseEntity<AccountResponse> get(@PathVariable UUID accountId) {
-        var accountExists = getAccountUsecase.exists(new FindAccountQuery(accountId));
-        response = AccountMapper.toResponse(getAccountUsecase.handle(accountExists));
-        var responseMap = Map.of(
-                "Acoount",response
-        );
+    public ResponseEntity<?> get(@PathVariable UUID accountId) {
+        var accountExists = getAccountUsecase.handle(new FindAccountQuery(accountId));
+       var response = AccountMapper.toResponse(accountExists);
+        var responseMap = Map.of( "Acoount",response);
         return ResponseEntity.ok(responseMap);
     }
 }
