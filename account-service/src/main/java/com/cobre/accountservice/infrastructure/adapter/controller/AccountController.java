@@ -39,6 +39,11 @@ public class AccountController {
 
     @GetMapping("/{accountId}")
     public ResponseEntity<AccountResponse> get(@PathVariable UUID accountId) {
-        return ResponseEntity.ok(AccountMapper.toGetResponse(getAccountUsecase.handle(new FindAccountQuery(accountId))));
+        var accountExists = getAccountUsecase.exists(new FindAccountQuery(accountId));
+        response = AccountMapper.toResponse(getAccountUsecase.handle(accountExists));
+        var responseMap = Map.of(
+                "Acoount", () ->,response
+        );
+        return ResponseEntity.ok(responseMap);
     }
 }
