@@ -8,20 +8,19 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-@Data
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
 @Builder
 public class CreateAccountCommand {
 
-    @NotBlank(message = "Name is required")
-    private String name;
+    private final @NotBlank(message = "Name is required")
+    String name;
 
-    @NotBlank(message = "Email is required")
+    private final @NotBlank(message = "Email is required")
     @Email(message = "Email should be valid")
-    private String email;
+    String email;
 
-    @NotNull(message = "Initial balance is required")
+    private final @NotNull(message = "Initial balance is required")
     @Positive(message = "Initial balance must be greater than zero")
-    private BigDecimal initialBalance;
+    BigDecimal initialBalance;
 }

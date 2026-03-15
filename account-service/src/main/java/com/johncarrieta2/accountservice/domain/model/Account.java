@@ -2,12 +2,14 @@ package com.cobre.accountservice.domain.model;
 
 import com.cobre.accountservice.domain.exceptions.InsufficientBalanceException;
 import com.cobre.accountservice.domain.exceptions.InvalidAmountException;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
 
+@Builder(toBuilder = true)
 @Getter
 public class Account {
 
@@ -18,19 +20,19 @@ public class Account {
     @Getter
     private BigDecimal balance;
 
-    public Account(String name, String email, BigDecimal balance) {
+    public Account(final String name, final String email, final BigDecimal balance) {
         this(UUID.randomUUID(), name, email, balance);
     }
 
-    public Account(UUID id, String name, String email, BigDecimal balance) {
+    public Account(final UUID id, final String name, final String email, final BigDecimal balance) {
         this.id = Objects.requireNonNull(id);
         this.name = Objects.requireNonNull(name);
         this.email = Objects.requireNonNull(email);
         this.balance = Objects.requireNonNull(balance);
     }
 
-    public void debit(BigDecimal amount) {
-        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+    public void debit(final BigDecimal amount) {
+        if (Objects.isNull(amount) || amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new InvalidAmountException("Amount must be greater than zero.");
         }
         if (this.balance.compareTo(amount) < 0) {
@@ -39,10 +41,18 @@ public class Account {
         this.balance = this.balance.subtract(amount);
     }
 
-    public void credit(BigDecimal amount) {
-        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+    public void credit(final BigDecimal amount) {
+        if (Objects.isNull(amount) || amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new InvalidAmountException("Amount must be greater than zero.");
         }
         this.balance = this.balance.add(amount);
+    }
+
+    private void ejemplo() {
+        final Account account = Account.builder()
+                .name("John Arrieta")
+                .email("dadsads")
+                .build();
+        final var account2 = account.toBuilder().balance(BigDecimal.TEN).build();
     }
 }

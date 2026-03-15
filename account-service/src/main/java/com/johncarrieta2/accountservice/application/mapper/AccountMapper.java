@@ -7,7 +7,7 @@ import com.cobre.accountservice.domain.model.Account;
 
 public class AccountMapper {
 
-    public static Account toDomain(CreateAccountCommand request) {
+    public static Account toDomain(final CreateAccountCommand request) {
         return new Account(
                 request.getName(),
                 request.getEmail(),
@@ -15,11 +15,11 @@ public class AccountMapper {
         );
     }
 
-    public static CreateAccountResponse toResponse(Account account) {
+    public static CreateAccountResponse toResponse(final Account account) {
         return new CreateAccountResponse(account.getId());
     }
 
-    public static AccountResponse toGetResponse(Account account) {
+    public static AccountResponse toGetResponse(final Account account) {
         return new AccountResponse(
                 account.getId(),
                 account.getName(),
@@ -27,5 +27,4 @@ public class AccountMapper {
                 account.getBalance()
         );
     }
-
 }

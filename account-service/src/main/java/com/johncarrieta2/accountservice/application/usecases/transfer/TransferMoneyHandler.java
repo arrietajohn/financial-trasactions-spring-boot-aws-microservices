@@ -20,18 +20,18 @@ public class TransferMoneyHandler implements ITransferMoneyUseCase {
 
     @Override
     @Transactional
-    public TransferMoneyResponse  transfer(TransferMoneyCommand command) {
-        Transfer transfer = new Transfer(
+    public TransferMoneyResponse transfer(final TransferMoneyCommand command) {
+        final Transfer transfer = new Transfer(
                 command.getSenderAccountId(),
                 command.getRecipientAccountId(),
                 command.getAmountToWithdraw(),
                 command.getAmountToTransfer()
         );
 
-        Account sender = accountRepository.findById(transfer.getSenderAccountId())
+        final Account sender = accountRepository.findById(transfer.getSenderAccountId())
                 .orElseThrow(() -> new AccountNotFoundException("Sender account not found"));
 
-        Account receiver = accountRepository.findById(transfer.getReceiverAccountId())
+        final Account receiver = accountRepository.findById(transfer.getReceiverAccountId())
                 .orElseThrow(() -> new AccountNotFoundException("Receiver account not found"));
 
         sender.debit(transfer.getAmountToWithdraw());

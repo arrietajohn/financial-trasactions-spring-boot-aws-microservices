@@ -16,23 +16,22 @@ public class AccountRepositoryImpl implements IAccountRepository {
     private final IAccountJpaRepository accountJpaRepository;
 
     @Override
-    public void save(Account account) {
+    public void save(final Account account) {
         accountJpaRepository.save(AccountEntityMapper.toEntity(account));
     }
 
     @Override
-    public Optional<Account> findById(UUID accountId) {
+    public Optional<Account> findById(final UUID accountId) {
         return accountJpaRepository.findById(accountId)
                 .map(AccountEntityMapper::toDomain);
     }
 
     @Override
-    public void update(Account account) {
-        UUID id = account.getId();
+    public void update(final Account account) {
+        final UUID id = account.getId();
         if (!accountJpaRepository.existsById(id)) {
             throw new AccountNotFoundException("Cannot update non-existent account with ID: " + id);
         }
         accountJpaRepository.save(AccountEntityMapper.toEntity(account));
     }
-
 }

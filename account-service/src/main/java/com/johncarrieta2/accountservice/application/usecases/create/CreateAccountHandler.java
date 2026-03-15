@@ -8,6 +8,7 @@ import com.cobre.accountservice.domain.model.Account;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -17,13 +18,13 @@ public class CreateAccountHandler implements ICreateAccountUseCase {
     private final IAccountRepository accountRepository;
 
     @Override
-    public Account handle(CreateAccountCommand command) {
-        if (command.getInitialBalance() == null || command.getInitialBalance().signum() < 0) {
+    public Account handle(final CreateAccountCommand command) {
+        if (Objects.isNull(command.getInitialBalance()) || command.getInitialBalance().signum() < 0) {
             throw new IllegalArgumentException("Initial balance must be non-negative");
         }
 
-        Account newAccount = AccountMapper.toDomain(command);
-          accountRepository.save(newAccount);
-          return newAccount;
+        final Account newAccount = AccountMapper.toDomain(command);
+        accountRepository.save(newAccount);
+        return newAccount;
     }
 }

@@ -5,7 +5,7 @@ import com.cobre.accountservice.infrastructure.persistence.entity.AccountEntity;
 
 public class AccountEntityMapper {
 
-    public static Account toDomain(AccountEntity entity) {
+    public static Account toDomain(final AccountEntity entity) {
         return new Account(
                 entity.getId(),
                 entity.getName(),
@@ -14,7 +14,7 @@ public class AccountEntityMapper {
         );
     }
 
-    public static AccountEntity toEntity(Account account) {
+    public static AccountEntity toEntity(final Account account) {
         return AccountEntity.builder()
                 .id(account.getId())
                 .name(account.getName())

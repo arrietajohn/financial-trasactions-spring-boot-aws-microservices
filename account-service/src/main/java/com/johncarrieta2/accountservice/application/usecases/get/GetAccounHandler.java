@@ -15,7 +15,7 @@ public class GetAccounHandler implements IGetAccountUseCase {
     private final IAccountRepository accountRepository;
 
     @Override
-    public Account handle(FindAccountQuery query) {
+    public Account handle(final FindAccountQuery query) {
         return accountRepository.findById(query.getAccountId()).orElseThrow(()
                 -> new AccountNotFoundException("Account not found with ID: " + query.getAccountId()));
 

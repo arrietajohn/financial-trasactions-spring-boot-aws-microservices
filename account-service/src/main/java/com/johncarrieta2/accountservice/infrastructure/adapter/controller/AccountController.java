@@ -29,17 +29,16 @@ public class AccountController {
     @Operation(summary = "Create a new account")
     @ApiResponse(responseCode = "201", description = "Account created")
     @PostMapping
-    public ResponseEntity<CreateAccountResponse> create(@Valid @RequestBody CreateAccountCommand request) {
-        var accountedCreated = accountService.handle(request);
-        var response = AccountMapper.toResponse(accountedCreated);
+    public ResponseEntity<CreateAccountResponse> create(@Valid @RequestBody final CreateAccountCommand request) {
+        final var accountedCreated = accountService.handle(request);
+        final var response = AccountMapper.toResponse(accountedCreated);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @GetMapping("/{accountId}")
-    public ResponseEntity< CreateAccountResponse> get(@PathVariable UUID accountId) {
-        var accountExists = getAccountUsecase.handle(new FindAccountQuery(accountId));
-       var response = AccountMapper.toResponse(accountExists);
-
+    public ResponseEntity<CreateAccountResponse> get(@PathVariable final UUID accountId) {
+        final var accountExists = getAccountUsecase.handle(new FindAccountQuery(accountId));
+        final var response = AccountMapper.toResponse(accountExists);
         return ResponseEntity.ok(response);
     }
 }

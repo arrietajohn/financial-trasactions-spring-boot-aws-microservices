@@ -45,9 +45,9 @@ public class TransferController {
     )
     @PostMapping
     public ResponseEntity<TransferMoneyResponse> transferMoney(
-            @Valid @RequestBody TransferMoneyCommand command) {
+            @Valid @RequestBody final TransferMoneyCommand command) {
 
-        TransferMoneyResponse response = transferMoneyUseCase.transfer(command);
+        final TransferMoneyResponse response = transferMoneyUseCase.transfer(command);
         return ResponseEntity.ok(response);
     }
 }
