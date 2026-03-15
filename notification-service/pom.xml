@@ -11,9 +11,9 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.cobre</groupId>
+    <groupId>com.johncarrieta2</groupId>
     <artifactId>notification-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>notification-service</name>
     <description>Notification service for processing payment operation results</description>
 
