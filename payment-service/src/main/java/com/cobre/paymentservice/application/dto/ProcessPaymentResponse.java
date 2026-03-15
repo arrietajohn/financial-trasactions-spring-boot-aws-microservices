@@ -1,6 +1,6 @@
-package com.cobre.paymentservice.application.dto;
+package com.johncarrieta2.paymentservice.application.dto;
 
-import com.cobre.paymentservice.domain.model.PaymentStatus;
+import com.johncarrieta2.paymentservice.domain.model.PaymentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

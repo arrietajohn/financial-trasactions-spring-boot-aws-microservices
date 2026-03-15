@@ -1,4 +1,4 @@
-package com.cobre.accountservice.application.dto;
+package com.johncarrieta2.accountservice.application.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

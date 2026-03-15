@@ -1,9 +1,9 @@
-package com.cobre.notificationservice.infrastructure.adapter.in.queue;
+package com.johncarrieta2.notificationservice.infrastructure.adapter.in.queue;
 
-import com.cobre.notificationservice.application.dto.PaymentNotificationMessage;
-import com.cobre.notificationservice.application.mapper.INotificationMapper;
-import com.cobre.notificationservice.application.usecases.IProcessNotificationUseCase;
-import com.cobre.notificationservice.domain.model.Notification;
+import com.johncarrieta2.notificationservice.application.dto.PaymentNotificationMessage;
+import com.johncarrieta2.notificationservice.application.mapper.INotificationMapper;
+import com.johncarrieta2.notificationservice.application.usecases.IProcessNotificationUseCase;
+import com.johncarrieta2.notificationservice.domain.model.Notification;
 
 import org.springframework.stereotype.Component;
 import io.awspring.cloud.sqs.annotation.SqsListener;

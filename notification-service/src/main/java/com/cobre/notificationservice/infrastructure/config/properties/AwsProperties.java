@@ -1,4 +1,4 @@
-package com.cobre.notificationservice.infrastructure.config.properties;
+package com.johncarrieta2.notificationservice.infrastructure.config.properties;
 
 import lombok.Getter;
 import lombok.Setter;

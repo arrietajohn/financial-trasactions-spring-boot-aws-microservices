@@ -1,6 +1,6 @@
-package com.cobre.accountservice.domain.exceptions;
+package com.johncarrieta2.accountservice.domain.exceptions;
 
-import com.cobre.accountservice.domain.model.ErrorCodeEnum;
+import com.johncarrieta2.accountservice.domain.model.ErrorCodeEnum;
 
 public class InvalidTransferAmountException extends DomainException {
     public InvalidTransferAmountException(String message) {

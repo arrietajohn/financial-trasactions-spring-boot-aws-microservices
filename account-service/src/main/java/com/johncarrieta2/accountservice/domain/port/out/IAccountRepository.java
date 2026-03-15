@@ -1,6 +1,6 @@
-package com.cobre.accountservice.domain.port.out;
+package com.johncarrieta2.accountservice.domain.port.out;
 
-import com.cobre.accountservice.domain.model.Account;
+import com.johncarrieta2.accountservice.domain.model.Account;
 import java.util.Optional;
 import java.util.UUID;
 

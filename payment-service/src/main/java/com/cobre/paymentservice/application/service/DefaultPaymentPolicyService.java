@@ -1,4 +1,4 @@
-package com.cobre.paymentservice.application.service;
+package com.johncarrieta2.paymentservice.application.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

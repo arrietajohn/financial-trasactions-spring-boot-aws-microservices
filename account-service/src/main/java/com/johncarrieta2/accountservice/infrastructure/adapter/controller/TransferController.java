@@ -1,9 +1,9 @@
-package com.cobre.accountservice.infrastructure.adapter.controller;
+package com.johncarrieta2.accountservice.infrastructure.adapter.controller;
 
-import com.cobre.accountservice.application.dto.TransferMoneyCommand;
-import com.cobre.accountservice.application.dto.TransferMoneyResponse;
-import com.cobre.accountservice.application.port.in.transfer.ITransferMoneyUseCase;
-import com.cobre.accountservice.infrastructure.adapter.dto.ApiErrorResponse;
+import com.johncarrieta2.accountservice.application.dto.TransferMoneyCommand;
+import com.johncarrieta2.accountservice.application.dto.TransferMoneyResponse;
+import com.johncarrieta2.accountservice.application.port.in.transfer.ITransferMoneyUseCase;
+import com.johncarrieta2.accountservice.infrastructure.adapter.dto.ApiErrorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

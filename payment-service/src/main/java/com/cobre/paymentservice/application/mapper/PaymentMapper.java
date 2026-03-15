@@ -1,10 +1,10 @@
-package com.cobre.paymentservice.application.mapper;
+package com.johncarrieta2.paymentservice.application.mapper;
 
-import com.cobre.paymentservice.application.dto.ProcessPaymentCommand;
-import com.cobre.paymentservice.application.dto.ProcessPaymentResponse;
-import com.cobre.paymentservice.domain.model.Payment;
-import com.cobre.paymentservice.domain.model.PaymentNotification;
-import com.cobre.paymentservice.domain.model.PaymentStatus;
+import com.johncarrieta2.paymentservice.application.dto.ProcessPaymentCommand;
+import com.johncarrieta2.paymentservice.application.dto.ProcessPaymentResponse;
+import com.johncarrieta2.paymentservice.domain.model.Payment;
+import com.johncarrieta2.paymentservice.domain.model.PaymentNotification;
+import com.johncarrieta2.paymentservice.domain.model.PaymentStatus;
 import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.time.Instant;

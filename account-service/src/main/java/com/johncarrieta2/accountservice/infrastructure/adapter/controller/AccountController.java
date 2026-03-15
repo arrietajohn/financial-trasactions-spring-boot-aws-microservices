@@ -1,10 +1,10 @@
-package com.cobre.accountservice.infrastructure.adapter.controller;
-import com.cobre.accountservice.application.dto.CreateAccountCommand;
-import com.cobre.accountservice.application.dto.FindAccountQuery;
-import com.cobre.accountservice.application.mapper.AccountMapper;
-import com.cobre.accountservice.application.port.in.create.ICreateAccountUseCase;
-import com.cobre.accountservice.application.port.in.get.IGetAccountUseCase;
-import com.cobre.accountservice.infrastructure.adapter.dto.CreateAccountResponse;
+package com.johncarrieta2.accountservice.infrastructure.adapter.controller;
+import com.johncarrieta2.accountservice.application.dto.CreateAccountCommand;
+import com.johncarrieta2.accountservice.application.dto.FindAccountQuery;
+import com.johncarrieta2.accountservice.application.mapper.AccountMapper;
+import com.johncarrieta2.accountservice.application.port.in.create.ICreateAccountUseCase;
+import com.johncarrieta2.accountservice.application.port.in.get.IGetAccountUseCase;
+import com.johncarrieta2.accountservice.infrastructure.adapter.dto.CreateAccountResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

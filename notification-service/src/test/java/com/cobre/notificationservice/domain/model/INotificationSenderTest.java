@@ -1,6 +1,6 @@
-package com.cobre.notificationservice.domain.model;
+package com.johncarrieta2.notificationservice.domain.model;
 
-import com.cobre.notificationservice.domain.port.out.INotificationSender;
+import com.johncarrieta2.notificationservice.domain.port.out.INotificationSender;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
-package com.cobre.paymentservice.domain.port.out;
+package com.johncarrieta2.paymentservice.domain.port.out;
 
-import com.cobre.paymentservice.domain.model.PaymentNotification;
+import com.johncarrieta2.paymentservice.domain.model.PaymentNotification;
 
 import java.util.UUID;
 

@@ -1,6 +1,6 @@
-package com.cobre.paymentservice.domain.port.out;
+package com.johncarrieta2.paymentservice.domain.port.out;
 
-import com.cobre.paymentservice.domain.model.Payment;
+import com.johncarrieta2.paymentservice.domain.model.Payment;
 
 public interface ISavePayment {
     void save(Payment payment);

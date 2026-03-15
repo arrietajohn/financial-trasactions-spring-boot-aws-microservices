@@ -1,4 +1,4 @@
-package com.cobre.notificationservice.domain.model;
+package com.johncarrieta2.notificationservice.domain.model;
 
 public enum PaymentStatus {
     SUCCESS,

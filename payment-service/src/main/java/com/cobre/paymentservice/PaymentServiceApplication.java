@@ -1,4 +1,4 @@
-package com.cobre.paymentservice;
+package com.johncarrieta2.paymentservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

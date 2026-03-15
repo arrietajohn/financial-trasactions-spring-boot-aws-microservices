@@ -1,4 +1,4 @@
-package com.cobre.accountservice.infrastructure.adapter.dto;
+package com.johncarrieta2.accountservice.infrastructure.adapter.dto;
 
 import lombok.Data;
 

@@ -1,9 +1,9 @@
-package com.cobre.paymentservice.infrastructure.adapter.repository;
+package com.johncarrieta2.paymentservice.infrastructure.adapter.repository;
 
-import com.cobre.paymentservice.domain.model.Payment;
-import com.cobre.paymentservice.domain.port.out.ISavePayment;
-import com.cobre.paymentservice.infrastructure.persistence.entity.PaymentEntity;
-import com.cobre.paymentservice.infrastructure.persistence.mapper.PaymentEntityMapper;
+import com.johncarrieta2.paymentservice.domain.model.Payment;
+import com.johncarrieta2.paymentservice.domain.port.out.ISavePayment;
+import com.johncarrieta2.paymentservice.infrastructure.persistence.entity.PaymentEntity;
+import com.johncarrieta2.paymentservice.infrastructure.persistence.mapper.PaymentEntityMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository

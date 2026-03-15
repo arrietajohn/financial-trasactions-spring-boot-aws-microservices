@@ -1,7 +1,7 @@
-package com.cobre.accountservice.domain.model;
+package com.johncarrieta2.accountservice.domain.model;
 
-import com.cobre.accountservice.domain.exceptions.InsufficientBalanceException;
-import com.cobre.accountservice.domain.exceptions.InvalidAmountException;
+import com.johncarrieta2.accountservice.domain.exceptions.InsufficientBalanceException;
+import com.johncarrieta2.accountservice.domain.exceptions.InvalidAmountException;
 import lombok.Builder;
 import lombok.Getter;
 

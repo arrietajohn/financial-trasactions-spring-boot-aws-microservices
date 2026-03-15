@@ -1,7 +1,7 @@
-package com.cobre.paymentservice.infrastructure.adapter.external;
+package com.johncarrieta2.paymentservice.infrastructure.adapter.external;
 
-import com.cobre.paymentservice.domain.model.PaymentNotification;
-import com.cobre.paymentservice.domain.port.out.INotifyPayment;
+import com.johncarrieta2.paymentservice.domain.model.PaymentNotification;
+import com.johncarrieta2.paymentservice.domain.port.out.INotifyPayment;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;

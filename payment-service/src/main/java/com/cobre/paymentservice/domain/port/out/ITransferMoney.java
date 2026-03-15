@@ -1,6 +1,6 @@
-package com.cobre.paymentservice.domain.port.out;
+package com.johncarrieta2.paymentservice.domain.port.out;
 
-import com.cobre.paymentservice.domain.model.TransferResult;
+import com.johncarrieta2.paymentservice.domain.model.TransferResult;
 
 import java.math.BigDecimal;
 import java.util.UUID;

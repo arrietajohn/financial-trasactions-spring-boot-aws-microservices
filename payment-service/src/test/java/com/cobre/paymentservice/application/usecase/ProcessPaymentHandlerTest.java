@@ -1,15 +1,15 @@
-package com.cobre.paymentservice.application.usecase;
+package com.johncarrieta2.paymentservice.application.usecase;
 
-import com.cobre.paymentservice.application.dto.ProcessPaymentCommand;
-import com.cobre.paymentservice.application.dto.ProcessPaymentResponse;
-import com.cobre.paymentservice.application.mapper.PaymentMapper;
-import com.cobre.paymentservice.application.usecases.payment.ProcessPaymentHandler;
-import com.cobre.paymentservice.application.service.IPaymentPolicyService;
-import com.cobre.paymentservice.domain.model.PaymentStatus;
-import com.cobre.paymentservice.domain.model.TransferResult;
-import com.cobre.paymentservice.domain.port.out.INotifyPayment;
-import com.cobre.paymentservice.domain.port.out.ISavePayment;
-import com.cobre.paymentservice.domain.port.out.ITransferMoney;
+import com.johncarrieta2.paymentservice.application.dto.ProcessPaymentCommand;
+import com.johncarrieta2.paymentservice.application.dto.ProcessPaymentResponse;
+import com.johncarrieta2.paymentservice.application.mapper.PaymentMapper;
+import com.johncarrieta2.paymentservice.application.usecases.payment.ProcessPaymentHandler;
+import com.johncarrieta2.paymentservice.application.service.IPaymentPolicyService;
+import com.johncarrieta2.paymentservice.domain.model.PaymentStatus;
+import com.johncarrieta2.paymentservice.domain.model.TransferResult;
+import com.johncarrieta2.paymentservice.domain.port.out.INotifyPayment;
+import com.johncarrieta2.paymentservice.domain.port.out.ISavePayment;
+import com.johncarrieta2.paymentservice.domain.port.out.ITransferMoney;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

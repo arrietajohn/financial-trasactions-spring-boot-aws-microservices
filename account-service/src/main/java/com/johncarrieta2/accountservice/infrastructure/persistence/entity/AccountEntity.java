@@ -1,4 +1,4 @@
-package com.cobre.accountservice.infrastructure.persistence.entity;
+package com.johncarrieta2.accountservice.infrastructure.persistence.entity;
 
 
 

@@ -1,6 +1,6 @@
-package com.cobre.paymentservice.infrastructure.persistence.entity;
+package com.johncarrieta2.paymentservice.infrastructure.persistence.entity;
 
-import com.cobre.paymentservice.domain.model.PaymentStatus;
+import com.johncarrieta2.paymentservice.domain.model.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;

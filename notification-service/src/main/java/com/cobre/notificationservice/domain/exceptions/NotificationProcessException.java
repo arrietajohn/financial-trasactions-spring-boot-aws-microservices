@@ -1,4 +1,4 @@
-package com.cobre.notificationservice.domain.exceptions;
+package com.johncarrieta2.notificationservice.domain.exceptions;
 
 public class NotificationProcessException extends RuntimeException {
     public NotificationProcessException(String message) {

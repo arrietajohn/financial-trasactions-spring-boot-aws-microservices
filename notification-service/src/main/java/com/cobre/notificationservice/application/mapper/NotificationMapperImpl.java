@@ -1,8 +1,8 @@
-package com.cobre.notificationservice.application.mapper;
+package com.johncarrieta2.notificationservice.application.mapper;
 
-import com.cobre.notificationservice.application.dto.PaymentNotificationMessage;
-import com.cobre.notificationservice.domain.model.Notification;
-import com.cobre.notificationservice.infrastructure.persistence.entity.NotificationEntity;
+import com.johncarrieta2.notificationservice.application.dto.PaymentNotificationMessage;
+import com.johncarrieta2.notificationservice.domain.model.Notification;
+import com.johncarrieta2.notificationservice.infrastructure.persistence.entity.NotificationEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

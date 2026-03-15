@@ -1,6 +1,6 @@
-package com.cobre.accountservice.infrastructure.adapter.repository;
+package com.johncarrieta2.accountservice.infrastructure.adapter.repository;
 
-import com.cobre.accountservice.infrastructure.persistence.entity.AccountEntity;
+import com.johncarrieta2.accountservice.infrastructure.persistence.entity.AccountEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

@@ -1,9 +1,9 @@
-package com.cobre.notificationservice.application.usecases;
+package com.johncarrieta2.notificationservice.application.usecases;
 
-import com.cobre.notificationservice.application.mapper.INotificationMapper;
-import com.cobre.notificationservice.domain.model.Notification;
-import com.cobre.notificationservice.domain.port.out.INotificationRepository;
-import com.cobre.notificationservice.domain.port.out.INotificationSender;
+import com.johncarrieta2.notificationservice.application.mapper.INotificationMapper;
+import com.johncarrieta2.notificationservice.domain.model.Notification;
+import com.johncarrieta2.notificationservice.domain.port.out.INotificationRepository;
+import com.johncarrieta2.notificationservice.domain.port.out.INotificationSender;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
-package com.cobre.accountservice.infrastructure.persistence.mapper;
+package com.johncarrieta2.accountservice.infrastructure.persistence.mapper;
 
-import com.cobre.accountservice.domain.model.Account;
-import com.cobre.accountservice.infrastructure.persistence.entity.AccountEntity;
+import com.johncarrieta2.accountservice.domain.model.Account;
+import com.johncarrieta2.accountservice.infrastructure.persistence.entity.AccountEntity;
 
 public class AccountEntityMapper {
 

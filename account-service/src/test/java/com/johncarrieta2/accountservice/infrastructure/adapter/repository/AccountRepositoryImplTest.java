@@ -1,8 +1,8 @@
-package com.cobre.accountservice.infrastructure.adapter.repository;
+package com.johncarrieta2.accountservice.infrastructure.adapter.repository;
 
 
 
-import com.cobre.accountservice.infrastructure.persistence.entity.AccountEntity;
+import com.johncarrieta2.accountservice.infrastructure.persistence.entity.AccountEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

@@ -1,7 +1,7 @@
-package com.cobre.paymentservice.infrastructure.persistence.mapper;
+package com.johncarrieta2.paymentservice.infrastructure.persistence.mapper;
 
-import com.cobre.paymentservice.domain.model.Payment;
-import com.cobre.paymentservice.infrastructure.persistence.entity.PaymentEntity;
+import com.johncarrieta2.paymentservice.domain.model.Payment;
+import com.johncarrieta2.paymentservice.infrastructure.persistence.entity.PaymentEntity;
 import org.springframework.stereotype.Component;
 
 @Component

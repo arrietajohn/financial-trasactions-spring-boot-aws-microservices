@@ -1,6 +1,6 @@
-package com.cobre.accountservice.application.dto;
+package com.johncarrieta2.accountservice.application.dto;
 
-import com.cobre.accountservice.domain.model.TransferStatusEnum;
+import com.johncarrieta2.accountservice.domain.model.TransferStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.cobre.paymentservice.domain.exceptions;
+package com.johncarrieta2.paymentservice.domain.exceptions;
 
 public class PaymentAlreadyExistsException extends RuntimeException {
     public PaymentAlreadyExistsException(String message) {

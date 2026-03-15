@@ -1,4 +1,4 @@
-package com.cobre.paymentservice.domain.model;
+package com.johncarrieta2.paymentservice.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

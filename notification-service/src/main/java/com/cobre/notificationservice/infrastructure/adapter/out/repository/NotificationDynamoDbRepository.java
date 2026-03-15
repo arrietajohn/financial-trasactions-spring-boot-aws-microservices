@@ -1,9 +1,9 @@
-package com.cobre.notificationservice.infrastructure.adapter.out.repository;
+package com.johncarrieta2.notificationservice.infrastructure.adapter.out.repository;
 
-import com.cobre.notificationservice.domain.model.Notification;
-import com.cobre.notificationservice.domain.port.out.INotificationRepository;
-import com.cobre.notificationservice.infrastructure.persistence.entity.NotificationEntity;
-import com.cobre.notificationservice.infrastructure.persistence.mapper.NotificationDynamoMapper;
+import com.johncarrieta2.notificationservice.domain.model.Notification;
+import com.johncarrieta2.notificationservice.domain.port.out.INotificationRepository;
+import com.johncarrieta2.notificationservice.infrastructure.persistence.entity.NotificationEntity;
+import com.johncarrieta2.notificationservice.infrastructure.persistence.mapper.NotificationDynamoMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

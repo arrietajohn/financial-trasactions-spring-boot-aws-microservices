@@ -1,4 +1,4 @@
-package com.cobre.notificationservice.domain.model;
+package com.johncarrieta2.notificationservice.domain.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

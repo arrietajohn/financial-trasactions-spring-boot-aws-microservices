@@ -1,6 +1,6 @@
-package com.cobre.paymentservice.domain.model;
+package com.johncarrieta2.paymentservice.domain.model;
 
-import com.cobre.paymentservice.domain.port.out.INotifyPayment;
+import com.johncarrieta2.paymentservice.domain.port.out.INotifyPayment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;

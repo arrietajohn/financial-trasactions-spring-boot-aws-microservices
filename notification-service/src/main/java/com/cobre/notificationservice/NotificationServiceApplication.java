@@ -1,6 +1,6 @@
-package com.cobre.notificationservice;
+package com.johncarrieta2.notificationservice;
 
-import com.cobre.notificationservice.infrastructure.config.properties.AwsProperties;
+import com.johncarrieta2.notificationservice.infrastructure.config.properties.AwsProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

@@ -1,4 +1,4 @@
-package com.cobre.paymentservice.application.dto;
+package com.johncarrieta2.paymentservice.application.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

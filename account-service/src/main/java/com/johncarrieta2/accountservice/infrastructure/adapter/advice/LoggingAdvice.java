@@ -1,10 +1,10 @@
-package com.cobre.accountservice.infrastructure.adapter.advice;
+package com.johncarrieta2.accountservice.infrastructure.adapter.advice;
 
-import com.cobre.accountservice.domain.exceptions.AccountNotFoundException;
-import com.cobre.accountservice.domain.exceptions.InsufficientBalanceException;
-import com.cobre.accountservice.domain.exceptions.InvalidAmountException;
-import com.cobre.accountservice.domain.exceptions.InvalidTransferAmountException;
-import com.cobre.accountservice.domain.model.TransferStatusEnum;
+import com.johncarrieta2.accountservice.domain.exceptions.AccountNotFoundException;
+import com.johncarrieta2.accountservice.domain.exceptions.InsufficientBalanceException;
+import com.johncarrieta2.accountservice.domain.exceptions.InvalidAmountException;
+import com.johncarrieta2.accountservice.domain.exceptions.InvalidTransferAmountException;
+import com.johncarrieta2.accountservice.domain.model.TransferStatusEnum;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

@@ -1,10 +1,10 @@
-package com.cobre.accountservice.application.usecases.create;
+package com.johncarrieta2.accountservice.application.usecases.create;
 
-import com.cobre.accountservice.application.dto.CreateAccountCommand;
-import com.cobre.accountservice.application.mapper.AccountMapper;
-import com.cobre.accountservice.application.port.in.create.ICreateAccountUseCase;
-import com.cobre.accountservice.domain.port.out.IAccountRepository;
-import com.cobre.accountservice.domain.model.Account;
+import com.johncarrieta2.accountservice.application.dto.CreateAccountCommand;
+import com.johncarrieta2.accountservice.application.mapper.AccountMapper;
+import com.johncarrieta2.accountservice.application.port.in.create.ICreateAccountUseCase;
+import com.johncarrieta2.accountservice.domain.port.out.IAccountRepository;
+import com.johncarrieta2.accountservice.domain.model.Account;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

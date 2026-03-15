@@ -18,7 +18,7 @@ server:
 logging:
   level:
     root: INFO
-    com.cobre.notificationservice: DEBUG
+    com.johncarrieta2.notificationservice: DEBUG
     org.springframework: WARN
     org.springframework.boot.autoconfigure: ERROR
 

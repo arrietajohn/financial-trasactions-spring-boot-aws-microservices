@@ -1,4 +1,4 @@
-package com.cobre.accountservice.domain.model;
+package com.johncarrieta2.accountservice.domain.model;
 
 public enum TransferStatusEnum {
     SUCCESS,

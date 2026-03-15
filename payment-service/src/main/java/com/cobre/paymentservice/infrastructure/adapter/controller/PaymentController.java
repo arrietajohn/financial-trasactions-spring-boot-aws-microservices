@@ -1,9 +1,9 @@
-package com.cobre.paymentservice.infrastructure.adapter.controller;
+package com.johncarrieta2.paymentservice.infrastructure.adapter.controller;
 
-import com.cobre.paymentservice.application.dto.ProcessPaymentCommand;
-import com.cobre.paymentservice.application.dto.ProcessPaymentResponse;
-import com.cobre.paymentservice.application.port.in.payment.IProcessPaymentUseCase;
-import com.cobre.paymentservice.domain.model.PaymentStatus;
+import com.johncarrieta2.paymentservice.application.dto.ProcessPaymentCommand;
+import com.johncarrieta2.paymentservice.application.dto.ProcessPaymentResponse;
+import com.johncarrieta2.paymentservice.application.port.in.payment.IProcessPaymentUseCase;
+import com.johncarrieta2.paymentservice.domain.model.PaymentStatus;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

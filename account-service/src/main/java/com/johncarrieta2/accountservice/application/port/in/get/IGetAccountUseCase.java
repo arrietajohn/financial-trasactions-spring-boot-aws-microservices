@@ -1,7 +1,7 @@
-package com.cobre.accountservice.application.port.in.get;
+package com.johncarrieta2.accountservice.application.port.in.get;
 
-import com.cobre.accountservice.application.dto.FindAccountQuery;
-import com.cobre.accountservice.domain.model.Account;
+import com.johncarrieta2.accountservice.application.dto.FindAccountQuery;
+import com.johncarrieta2.accountservice.domain.model.Account;
 
 public interface IGetAccountUseCase {
      Account handle(FindAccountQuery query) ;

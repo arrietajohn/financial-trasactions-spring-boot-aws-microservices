@@ -1,8 +1,8 @@
-package com.cobre.notificationservice.infrastructure.persistence.mapper;
+package com.johncarrieta2.notificationservice.infrastructure.persistence.mapper;
 
-import com.cobre.notificationservice.domain.model.Notification;
-import com.cobre.notificationservice.domain.model.PaymentStatus;
-import com.cobre.notificationservice.infrastructure.persistence.entity.NotificationEntity;
+import com.johncarrieta2.notificationservice.domain.model.Notification;
+import com.johncarrieta2.notificationservice.domain.model.PaymentStatus;
+import com.johncarrieta2.notificationservice.infrastructure.persistence.entity.NotificationEntity;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;

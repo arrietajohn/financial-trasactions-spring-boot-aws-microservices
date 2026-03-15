@@ -1,7 +1,7 @@
-package com.cobre.accountservice.infrastructure.adapter.repository;
+package com.johncarrieta2.accountservice.infrastructure.adapter.repository;
 
-import com.cobre.accountservice.domain.model.Account;
-import com.cobre.accountservice.domain.port.out.IAccountRepository;
+import com.johncarrieta2.accountservice.domain.model.Account;
+import com.johncarrieta2.accountservice.domain.port.out.IAccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

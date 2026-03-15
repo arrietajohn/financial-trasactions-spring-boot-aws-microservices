@@ -1,4 +1,4 @@
-package com.cobre.accountservice.infrastructure.config;
+package com.johncarrieta2.accountservice.infrastructure.config;
 
 
 import org.springframework.context.annotation.Configuration;

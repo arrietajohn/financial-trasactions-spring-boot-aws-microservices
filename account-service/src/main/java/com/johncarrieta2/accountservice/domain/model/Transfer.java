@@ -1,6 +1,6 @@
-package com.cobre.accountservice.domain.model;
+package com.johncarrieta2.accountservice.domain.model;
 
-import com.cobre.accountservice.domain.exceptions.InvalidTransferAmountException;
+import com.johncarrieta2.accountservice.domain.exceptions.InvalidTransferAmountException;
 import lombok.Getter;
 import java.math.BigDecimal;
 import java.util.Objects;

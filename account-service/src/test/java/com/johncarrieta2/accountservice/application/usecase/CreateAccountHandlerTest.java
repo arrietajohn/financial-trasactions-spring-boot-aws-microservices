@@ -1,8 +1,8 @@
-package com.cobre.accountservice.application.usecase;
+package com.johncarrieta2.accountservice.application.usecase;
 
-import com.cobre.accountservice.application.dto.CreateAccountCommand;
-import com.cobre.accountservice.application.port.in.create.ICreateAccountUseCase;
-import com.cobre.accountservice.domain.model.Account;
+import com.johncarrieta2.accountservice.application.dto.CreateAccountCommand;
+import com.johncarrieta2.accountservice.application.port.in.create.ICreateAccountUseCase;
+import com.johncarrieta2.accountservice.domain.model.Account;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

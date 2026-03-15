@@ -1,6 +1,6 @@
-package com.cobre.notificationservice.infrastructure.config;
+package com.johncarrieta2.notificationservice.infrastructure.config;
 
-import com.cobre.notificationservice.infrastructure.config.properties.AwsProperties;
+import com.johncarrieta2.notificationservice.infrastructure.config.properties.AwsProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

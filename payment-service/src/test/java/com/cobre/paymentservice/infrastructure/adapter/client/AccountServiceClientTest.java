@@ -1,8 +1,8 @@
-package com.cobre.paymentservice.infrastructure.adapter.client;
+package com.johncarrieta2.paymentservice.infrastructure.adapter.client;
 
-import com.cobre.paymentservice.domain.model.TransferErrorCode;
-import com.cobre.paymentservice.domain.model.TransferResult;
-import com.cobre.paymentservice.infrastructure.adapter.external.AccountServiceClient;
+import com.johncarrieta2.paymentservice.domain.model.TransferErrorCode;
+import com.johncarrieta2.paymentservice.domain.model.TransferResult;
+import com.johncarrieta2.paymentservice.infrastructure.adapter.external.AccountServiceClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

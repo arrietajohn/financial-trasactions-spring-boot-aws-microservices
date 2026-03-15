@@ -1,6 +1,6 @@
-package com.cobre.notificationservice.application.dto;
+package com.johncarrieta2.notificationservice.application.dto;
 
-import com.cobre.notificationservice.domain.model.PaymentStatus;
+import com.johncarrieta2.notificationservice.domain.model.PaymentStatus;
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.Instant;

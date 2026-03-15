@@ -1,6 +1,6 @@
-package com.cobre.notificationservice.domain.port.out;
+package com.johncarrieta2.notificationservice.domain.port.out;
 
-import com.cobre.notificationservice.domain.model.Notification;
+import com.johncarrieta2.notificationservice.domain.model.Notification;
 
 public interface INotificationSender {
     void send(Notification notification);

@@ -1,4 +1,4 @@
-package com.cobre.paymentservice.infrastructure.config;
+package com.johncarrieta2.paymentservice.infrastructure.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

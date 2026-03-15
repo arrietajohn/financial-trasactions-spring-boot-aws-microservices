@@ -1,13 +1,13 @@
-package com.cobre.accountservice.application.usecase;
+package com.johncarrieta2.accountservice.application.usecase;
 
-import com.cobre.accountservice.application.dto.TransferMoneyCommand;
-import com.cobre.accountservice.application.dto.TransferMoneyResponse;
-import com.cobre.accountservice.application.usecases.transfer.TransferMoneyHandler;
-import com.cobre.accountservice.domain.exceptions.AccountNotFoundException;
-import com.cobre.accountservice.domain.exceptions.InsufficientBalanceException;
-import com.cobre.accountservice.domain.model.Account;
-import com.cobre.accountservice.domain.model.TransferStatusEnum;
-import com.cobre.accountservice.domain.port.out.IAccountRepository;
+import com.johncarrieta2.accountservice.application.dto.TransferMoneyCommand;
+import com.johncarrieta2.accountservice.application.dto.TransferMoneyResponse;
+import com.johncarrieta2.accountservice.application.usecases.transfer.TransferMoneyHandler;
+import com.johncarrieta2.accountservice.domain.exceptions.AccountNotFoundException;
+import com.johncarrieta2.accountservice.domain.exceptions.InsufficientBalanceException;
+import com.johncarrieta2.accountservice.domain.model.Account;
+import com.johncarrieta2.accountservice.domain.model.TransferStatusEnum;
+import com.johncarrieta2.accountservice.domain.port.out.IAccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

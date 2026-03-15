@@ -1,6 +1,6 @@
-package com.cobre.notificationservice.infrastructure.persistence.entity;
+package com.johncarrieta2.notificationservice.infrastructure.persistence.entity;
 
-import com.cobre.notificationservice.domain.model.PaymentStatus;
+import com.johncarrieta2.notificationservice.domain.model.PaymentStatus;
 import lombok.*;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.*;
 import java.math.BigDecimal;

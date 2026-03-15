@@ -1,11 +1,11 @@
-package com.cobre.accountservice.application.usecases.get;
+package com.johncarrieta2.accountservice.application.usecases.get;
 
 
-import com.cobre.accountservice.application.dto.FindAccountQuery;
-import com.cobre.accountservice.application.port.in.get.IGetAccountUseCase;
-import com.cobre.accountservice.domain.exceptions.AccountNotFoundException;
-import com.cobre.accountservice.domain.model.Account;
-import com.cobre.accountservice.domain.port.out.IAccountRepository;
+import com.johncarrieta2.accountservice.application.dto.FindAccountQuery;
+import com.johncarrieta2.accountservice.application.port.in.get.IGetAccountUseCase;
+import com.johncarrieta2.accountservice.domain.exceptions.AccountNotFoundException;
+import com.johncarrieta2.accountservice.domain.model.Account;
+import com.johncarrieta2.accountservice.domain.port.out.IAccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

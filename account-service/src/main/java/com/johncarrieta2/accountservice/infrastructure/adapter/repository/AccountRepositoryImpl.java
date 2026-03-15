@@ -1,9 +1,9 @@
-package com.cobre.accountservice.infrastructure.adapter.repository;
+package com.johncarrieta2.accountservice.infrastructure.adapter.repository;
 
-import com.cobre.accountservice.domain.exceptions.AccountNotFoundException;
-import com.cobre.accountservice.domain.model.Account;
-import com.cobre.accountservice.domain.port.out.IAccountRepository;
-import com.cobre.accountservice.infrastructure.persistence.mapper.AccountEntityMapper;
+import com.johncarrieta2.accountservice.domain.exceptions.AccountNotFoundException;
+import com.johncarrieta2.accountservice.domain.model.Account;
+import com.johncarrieta2.accountservice.domain.port.out.IAccountRepository;
+import com.johncarrieta2.accountservice.infrastructure.persistence.mapper.AccountEntityMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;
