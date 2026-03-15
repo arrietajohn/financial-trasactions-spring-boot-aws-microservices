@@ -11,9 +11,9 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.cobre</groupId>
+    <groupId>com.johncarrieta2</groupId>
     <artifactId>account-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>account-service</name>
     <description>account-service</description>
 
